@@ -14,14 +14,17 @@ FoorumApp.service('Api', function($http){
 
   // Viestien Api-funktiot
   this.getMessage = function(id){
+    return $http.get('/messages/' + id);
     // Hae annetulla id:llä varustettu viesti toteuttamasi Api:n polusta /messages/:id
   }
   this.addMessage = function(message, topicId){
-    // Lisää annettu viesti lähettämällä POST-pyyntö toteuttamasi Api:n polkuun /topics/:topicId/message
+    return $http.post('/topics/' + topicId + '/message', message);
+      // Lisää annettu viesti lähettämällä POST-pyyntö toteuttamasi Api:n polkuun /topics/:topicId/message
   }
 
   // Vastausten Api-funktiot
   this.addReply = function(reply, messageId){
+    return $http.post('/messages/' + messageId + "/reply", reply);
     // Lisää annettu vastaus lähettämällä POST-pyyntö toteuttamasi Api:n polkuun /messages/:messageId/reply
   }
 
