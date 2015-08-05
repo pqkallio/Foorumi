@@ -15,12 +15,12 @@ router.post('/', function(req, res, next){
   }).then(function(user) {
       if (user) {
           res.status(400).json({ error: 'Käyttäjätunnus on jo käytössä!' });
+      } else {
+          Models.User.create(userToAdd).then(function(user) {
+            res.json(user);
+          });
       }
   });
-  
-  Models.User.create(userToAdd).then(function(user) {
-    res.json(user);
-  })
 });
 
 // POST /users/authenticate

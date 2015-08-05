@@ -1,17 +1,16 @@
 <div class="page-header">
   <h1>Kirjaudu sisään</h1>
 </div>
-
 <form>
   <div class="form-group">
     <label>Käyttäjätunnus</label>
-    <input type="text" class="form-control">
+    <input type="text" ng-model="username" class="form-control">
   </div>
 
   <div class="form-group">
     <label>Salasana</label>
-    <input type="text" class="form-control">
+    <input type="text" ng-model="password" class="form-control">
   </div>
 
-  <button class="btn btn-primary">Kirjaudu sisään</button>
+  <button class="btn btn-primary" ng-click="login()">Kirjaudu sisään</button>
 </form>

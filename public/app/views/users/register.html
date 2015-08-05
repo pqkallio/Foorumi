@@ -1,22 +1,27 @@
 <div class="page-header">
   <h1>Rekisteröidy</h1>
 </div>
-
-<form>
+<div ng-if="errorMessage" class="text text-danger">
+    <p>{{errorMessage}}</p>
+</div>
+<form name="registrationForm">
   <div class="form-group">
     <label>Käyttäjätunnus</label>
-    <input type="text" class="form-control">
+    <input type="text" ng-model="username" id="username" name="username" class="form-control" required>
+    <span class="text text-danger" ng-if="registrationForm.username.$invalid && registrationForm.username.$dirty"> Syötä käyttäjätunnus!</span>
   </div>
 
   <div class="form-group">
     <label>Salasana</label>
-    <input type="text" class="form-control">
+    <input type="text" ng-model="password" id="password" name="password" class="form-control" required>
+    <span class="text text-danger" ng-if="registrationForm.password.$invalid && registrationForm.password.$dirty"> Syötä salasana!</span>
   </div>
 
   <div class="form-group">
     <label>Salasana uudelleen</label>
-    <input type="text" class="form-control">
+    <input type="text" ng-model="passwordConfirmation" name="passwordConfirmation" id="passwordConfirmation" required class="form-control">
+    <span class="text text-danger" ng-if="registrationForm.passwordConfirmation.$invalid && registrationForm.passwordConfirmation.$dirty"> Syötä salasana samassa muodossa!</span>
   </div>
 
-  <button class="btn btn-success">Rekisteröidy</button>
+  <button class="btn btn-success" ng-click="register()" ng-disabled="registrationForm.$invalid">Rekisteröidy</button>
 </form>
